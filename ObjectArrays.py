@@ -1,26 +1,29 @@
 import DictionaryInit as Dict
+import numpy as py
+
 
 def neoName():
     # Iterate all names in NEO API to create a list of all items
     objectName = []
-    for designation in Dict.CE_dict['near_earth_objects']:
-        objectName.append(designation.get('name_limited'))
+    for i in Dict.CE_dict['near_earth_objects']:
+        objectName.append(i.get('name_limited'))
     return objectName
 
 def neoDiameter():
     #Iterate all Diameters for all objects and then find the average diameter of all NEOs
     objectSizeMin = []
     objectSizeMax = []
-    for estimated_diameter in Dict.CE_dict['near_earth_objects']:
-        for meters in estimated_diameter:
-            try:
-                objectSizeMax.append(meters.get('estimated_diameter_min'))
-                objectSizeMin.append(meters.get('estimated_diameter_max'))
-                print(objectSizeMax, objectSizeMin)
-                return objectSizeMin, objectSizeMax
-            except:
-                print("Diameter Data could not be found, try again")
-                return objectSizeMin, objectSizeMax
+    arrayNum = 0
+    for i in Dict.CE_dict['near_earth_objects']:
+        try:
+            for i in Dict.CE_dict['near_earth_objects'][arrayNum]['estimated_diameter']['meters'][0]:
+                print(Dict.CE_dict['near_earth_objects'][arrayNum]['estimated_diameter']['meters'][0])
+            arrayNum += 1
+        except IndexError:
+            break
+
+# Test neoDiameter
+neoDiameter()
 
 def neoTimes():
     # Create an array that includes the Name and Date of each NEO's expected CE's
