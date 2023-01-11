@@ -2,6 +2,7 @@ import DictionaryInit as Dict
 import numpy as py
 
 
+
 def neoName():
     # Iterate all names in NEO API to create a list of all items
     objectName = []
@@ -13,12 +14,14 @@ def neoDiameter():
     #Iterate all Diameters for all objects and then find the average diameter of all NEOs
     objectSizeMin = []
     objectSizeMax = []
-    arrayNum = 0
+    #arrayNum = 0
     for i in Dict.CE_dict['near_earth_objects']:
         try:
-            for i in Dict.CE_dict['near_earth_objects'][arrayNum]['estimated_diameter']['meters'][0]:
-                print(Dict.CE_dict['near_earth_objects'][arrayNum]['estimated_diameter']['meters'][0])
-            arrayNum += 1
+            for j in i['estimated_diameter']['meters']:
+                print(i['name'])
+                print(j)
+                print(i['estimated_diameter']['meters'][j])
+            #arrayNum += 1
         except IndexError:
             break
 
