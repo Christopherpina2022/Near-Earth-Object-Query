@@ -22,6 +22,7 @@ encounterRequest = Label(top, text="Find an encounter: ").pack()
 drop = OptionMenu(top, clicked, *listItems).pack()
 minAvgDiameter = Label(top, text="Average Min Diameter: " + str(sizeMin)).pack()
 maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(sizeMax)).pack()
+# nextCE = Label(top, text="Next Close Encounter: "+ str(??).pack())
 
 # Execute application
 top.mainloop()

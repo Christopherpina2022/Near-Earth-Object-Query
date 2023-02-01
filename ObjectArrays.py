@@ -30,10 +30,11 @@ def neoMissDistance():
     missDistance = []
     for i in Dict.CE_dict['near_earth_objects']:
         for j in i['close_approach_data']:
-            print (i['close_approach_data']['miss_distance]'])
+            for i in j['miss_distance']['lunar']:
+                print (j['miss_distance']['lunar'][i])
                 
 # Test Miss Distance
-#neoMissDistance()
+neoMissDistance()
 
 def neoTimes():
     # Create an array that includes the Name and Date of each NEO's expected CE's
