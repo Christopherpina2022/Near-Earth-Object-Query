@@ -21,6 +21,13 @@ def neoDiameter():
                 print(i['name'])
                 print(j)
                 print(i['estimated_diameter']['meters'][j])
+                if j == 'estimated_diameter_min':
+                    objectSizeMin.append(i['estimated_diameter']['meters'][j])
+                if j == 'estimated_diameter_max':
+                    objectSizeMax.append(i['estimated_diameter']['meters'][j])
+                    
+                print(objectSizeMin)
+                print(objectSizeMax)
             #arrayNum += 1
         except IndexError:
             break
