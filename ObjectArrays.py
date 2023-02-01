@@ -11,29 +11,19 @@ def neoName():
     return objectName
 
 def neoDiameter():
-    #Iterate all Diameters for all objects and then find the average diameter of all NEOs
+    # Iterate all diameters for all Near Earth Objects
     objectSizeMin = []
     objectSizeMax = []
-    #arrayNum = 0
     for i in Dict.CE_dict['near_earth_objects']:
         try:
             for j in i['estimated_diameter']['meters']:
-                print(i['name'])
-                print(j)
-                print(i['estimated_diameter']['meters'][j])
                 if j == 'estimated_diameter_min':
                     objectSizeMin.append(i['estimated_diameter']['meters'][j])
                 if j == 'estimated_diameter_max':
                     objectSizeMax.append(i['estimated_diameter']['meters'][j])
-                    
-                print(objectSizeMin)
-                print(objectSizeMax)
-            #arrayNum += 1
         except IndexError:
             break
-
-# Test neoDiameter
-neoDiameter()
+        return objectSizeMax, objectSizeMin
 
 def neoTimes():
     # Create an array that includes the Name and Date of each NEO's expected CE's
