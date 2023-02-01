@@ -25,6 +25,16 @@ def neoDiameter():
             break
         return objectSizeMax, objectSizeMin
 
+def neoMissDistance():
+    # Create an array that includes the Name and Lunar distance of each NEO's miss distance
+    missDistance = []
+    for i in Dict.CE_dict['near_earth_objects']:
+        for j in i['close_approach_data']:
+            print (i['close_approach_data']['miss_distance]'])
+                
+# Test Miss Distance
+#neoMissDistance()
+
 def neoTimes():
     # Create an array that includes the Name and Date of each NEO's expected CE's
     objectTime = []
@@ -36,15 +46,3 @@ def neoTimes():
             except:
                 print('Close Approach Data not available.')
                 return objectTime
-
-def neoMissDistance():
-    # Create an array that includes the Name and Lunar distance of each NEO's miss distance
-    missDistance = []
-    for name in Dict.CE_dict['near_earth_objects']:
-        for close_approach_data in Dict.CE_dict['near_earth_objects']:
-            for miss_distance in close_approach_data:
-                try:
-                    missDistance.append([name.get('name_limited'), miss_distance.get('miss_distance')])
-                except AttributeError:
-                    print('Miss Distance not available.')
-                    return missDistance
