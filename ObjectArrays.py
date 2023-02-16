@@ -12,6 +12,7 @@ def neoName():
 
 def neoDiameter():
     # Iterate all diameters for all Near Earth Objects
+    # Needs to be optimized so that I can use this data for the UI
     objectSizeMin = []
     objectSizeMax = []
     for i in Dict.CE_dict['near_earth_objects']:
@@ -34,3 +35,6 @@ def neoMissDistance():
                 if k == 'lunar':
                     missDistance.append([i["name_limited"], j["close_approach_date"], j['miss_distance'][k]])
     return missDistance
+
+# add additional information to see if we can look up the magnitude, is it dangerous,
+# and maybe the link to more info about that NEO
