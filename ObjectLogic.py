@@ -1,18 +1,22 @@
-import DictionaryInit as Dict
-import Menu as Menu
+#import DictionaryInit as Dict
+#import Menu 
 import ObjectArrays as Arrays
+from ObjectArrays import neoDiameter
 from datetime import datetime
 
 def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
-    sizeMin = sum(Arrays.neoDiameter.objectSizeMin)/len(Arrays.neoDiameter.objectSizeMin)
-    sizeMax = sum(Arrays.neoDiameter.objectSizeMax)/len(Arrays.neoDiameter.objectSizeMax)
+    neoDiameter(objectsizeMin=[])
+    
+    print(neoDiameter.objectsizeMin)    
+    #sizeMin = sum(neoDiameter.objectSizeMin)/len(neoDiameter.objectSizeMin)
+    #sizeMax = sum(neoDiameter.objectSizeMax)/len(neoDiameter.objectSizeMax)
 
-    print(sizeMax, sizeMin)
-    return(sizeMin, sizeMax)
+    #print(sizeMax, sizeMin)
+    #return(sizeMin, sizeMax)
 
 # Test Avg Diameter
-#averageDiameter()
+averageDiameter()
 
 def nextEncounter():
     # Determine the amount of time until the next Close Encounter and what object it is

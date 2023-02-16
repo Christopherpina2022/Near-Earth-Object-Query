@@ -11,20 +11,20 @@ def neoName():
     return objectName
 
 def neoDiameter():
-    # Iterate all diameters for all Near Earth Objects
-    # Needs to be optimized so that I can use this data for the UI
+    # Iterate all diameters for all Near Earth Objects, name is included to help identify the object a lot better and to
+    # Assist in reducing the amount of times we need to run this script
     objectSizeMin = []
     objectSizeMax = []
     for i in Dict.CE_dict['near_earth_objects']:
         try:
             for j in i['estimated_diameter']['meters']:
                 if j == 'estimated_diameter_min':
-                    objectSizeMin.append(i['estimated_diameter']['meters'][j])
+                    objectSizeMin.append([i["name_limited"], i['estimated_diameter']['meters'][j]])
                 if j == 'estimated_diameter_max':
-                    objectSizeMax.append(i['estimated_diameter']['meters'][j])
+                    objectSizeMax.append([i["name_limited"], i['estimated_diameter']['meters'][j]])
         except IndexError:
             break
-        return objectSizeMax, objectSizeMin
+    return objectSizeMax, objectSizeMin
 
 def neoMissDistance():
     # Create an array that includes the Name, date, and lunar distance of each NEO's miss distance
