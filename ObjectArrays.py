@@ -33,13 +33,7 @@ def neoMissDistance():
             for k in j['miss_distance']:
                 if k == 'lunar':
                     missDistance.append([i["name_limited"], j["close_approach_date"], j['miss_distance'][k]])
-                    
-    print (missDistance)
     return missDistance
-                    
-                
-# Test Miss Distance
-neoMissDistance()
 
 def neoTimes():
     # Create an array that includes the Name and Date of each NEO's expected CE's
