@@ -8,10 +8,15 @@ def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
     objectSizeMin = []
     objectSizeMax = []
-    #neoDiameterMin(objectSizeMin)
+    #neoDiameterMin(objectSizeMin)  This is used to call the data back to this function
+    
+    # list is also returning the name, so we need to only use the 2nd list item from a bigger list, which
+    # could be done by creating a new list that only has the data from the 2nd list item per value
+    
+    
        
-    sizeMin = sum(neoDiameterMin(objectSizeMin))/len(neoDiameterMin(objectSizeMin))
-    print (sizeMin)
+    #sizeMin = sum()/len()
+    #print (sizeMin)
     #sizeMax = sum(neoDiameter.objectSizeMax)/len(neoDiameter.objectSizeMax)
 
     #print(sizeMax, sizeMin)
