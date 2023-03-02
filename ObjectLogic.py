@@ -1,14 +1,14 @@
 #import DictionaryInit as Dict
 #import Menu 
 import ObjectArrays as Arrays
-from ObjectArrays import neoDiameter
+from ObjectArrays import *
 from datetime import datetime
 
 def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
-    neoDiameter(objectsizeMin=[])
+    #neoDiameter(objectsizeMin=[])
     
-    print(neoDiameter.objectsizeMin)    
+    print(neoDiameterMin([1]))    
     #sizeMin = sum(neoDiameter.objectSizeMin)/len(neoDiameter.objectSizeMin)
     #sizeMax = sum(neoDiameter.objectSizeMax)/len(neoDiameter.objectSizeMax)
 
