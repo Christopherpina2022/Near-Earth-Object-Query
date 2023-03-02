@@ -6,14 +6,11 @@ from datetime import datetime
 
 def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
-    objectSizeMin = []
-    objectSizeMax = []
-    #neoDiameterMin(objectSizeMin)  This is used to call the data back to this function
     
     # list is also returning the name, so we need to only use the 2nd list item from a bigger list, which
     # could be done by creating a new list that only has the data from the 2nd list item per value
     
-    
+    minDiameterList()
        
     #sizeMin = sum()/len()
     #print (sizeMin)
@@ -24,6 +21,14 @@ def averageDiameter():
 
 # Test Avg Diameter
 averageDiameter()
+
+def minDiameterList():
+    minDiameter = []
+    minDiameter = neoDiameterMin(minDiameter(0,1))
+    return minDiameter
+    
+def maxDiameterList():
+    maxDiameter = []
 
 def nextEncounter():
     # Determine the amount of time until the next Close Encounter and what object it is
