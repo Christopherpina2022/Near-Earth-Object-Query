@@ -6,10 +6,12 @@ from datetime import datetime
 
 def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
-    #neoDiameter(objectsizeMin=[])
-    
-    print(neoDiameterMin([1]))    
-    #sizeMin = sum(neoDiameter.objectSizeMin)/len(neoDiameter.objectSizeMin)
+    objectSizeMin = []
+    objectSizeMax = []
+    #neoDiameterMin(objectSizeMin)
+       
+    sizeMin = sum(neoDiameterMin(objectSizeMin))/len(neoDiameterMin(objectSizeMin))
+    print (sizeMin)
     #sizeMax = sum(neoDiameter.objectSizeMax)/len(neoDiameter.objectSizeMax)
 
     #print(sizeMax, sizeMin)

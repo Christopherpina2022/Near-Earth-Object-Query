@@ -23,7 +23,7 @@ def neoDiameterMax():
             break
     return objectSizeMax
 
-def neoDiameterMin():
+def neoDiameterMin(objectSizeMin):
     # Iterate all diameters for all Near Earth Objects, name is included to help identify the object a lot better and to
     # Assist in reducing the amount of times we need to run this script
     objectSizeMin = []
