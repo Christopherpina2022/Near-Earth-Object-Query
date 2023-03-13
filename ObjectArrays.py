@@ -10,7 +10,7 @@ def neoName():
         objectName.append(i.get('name_limited'))
     return objectName
 
-def neoDiameterMax():
+def neoDiameterMax(objectSizeMax):
     # Iterate all diameters for all Near Earth Objects, name is included to help identify the object a lot better and to
     # Assist in reducing the amount of times we need to run this script
     objectSizeMax = []
