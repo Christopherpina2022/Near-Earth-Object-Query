@@ -41,5 +41,8 @@ def nextEncounter():
 
 def closestEncounter():
     # Find the lowst number by Lunar units from how far a NEO missed Earth
-    lowestCE = min(Arrays.neoMissDistance.missDistance[1])
-    return lowestCE
+    lowestCE = neoMissDistance(missDistance=[])
+    print (lowestCE)
+    #return lowestCE
+    
+closestEncounter()

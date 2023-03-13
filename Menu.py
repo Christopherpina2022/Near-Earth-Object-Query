@@ -33,6 +33,7 @@ combo = ttk.Combobox(top, values= listItems).pack()
 minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0]) + " Meters").pack()
 maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1]) + " Meters").pack()
 currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".").pack()
+closestMiss = Label(top, text="The closest Object to miss the earth was "+ '' + ' by ' + '' + 'Lunar Units (400k Kilometers/Unit)').pack()
 
 # Creating all the data i want to pull per request, data will by default be hidden
 #minDiameter = Label(top, text="Min Diameter (meters): " + str(sizeMin)).pack()
