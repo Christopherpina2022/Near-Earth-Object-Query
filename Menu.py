@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import ObjectArrays as Arrays
 import ObjectLogic as Logic
+from ObjectLogic import *
 
 # Create Menu Screen
 top = Tk()
@@ -22,33 +23,31 @@ listItems = Arrays.neoName()
 clicked = StringVar()
 
 # Declare sizes of all NEOs
-sizeMin = 0
-sizeMax = 0
-#avgDiameter = ObjectLogic.averageDiameter(sizeMin, sizeMax)
+avgDiameter = averageDiameter(avgDiameter=[])
 
 # Create all visual items on application
 title = Label(top, text="NASA Close Encounter Query").pack()
 combo = ttk.Combobox(top, values= listItems).pack()
 
 #These widgets disappear after an item is selected and reappear after nothing is selected
-minAvgDiameter = Label(top, text="Average Min Diameter: " + str(sizeMin)).pack()
-maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(sizeMax)).pack()
+minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0])).pack()
+maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1])).pack()
 
 # Creating all the data i want to pull per request, data will by default be hidden
-minDiameter = Label(top, text="Min Diameter (meters): " + str(sizeMin)).grid_forget()
-maxDiameter = Label(top, text="Max Diameter (meters): " + str(sizeMax)).grid_forget()
-firstObservation = Label(top, text="First observed in : " + str(sizeMax)).grid_forget()
-neoMagnitude = Label(top, text="Magnitude: " +str(sizeMax)).grid_forget()
-nextApproachDate = Label(top, text="Next approach Date: " + str(sizeMax)).grid_forget()
-nearestMiss = Label(top, text="The nearest miss for this NEO was in " + str(sizeMax) + " by "+ str(sizeMax) + " Kilometers").pack_forget() # Date and then distance
+#minDiameter = Label(top, text="Min Diameter (meters): " + str(sizeMin)).pack()
+#maxDiameter = Label(top, text="Max Diameter (meters): " + str(sizeMax)).pack()
+#firstObservation = Label(top, text="First observed in : " + str(sizeMax)).pack()
+#neoMagnitude = Label(top, text="Magnitude: " +str(sizeMax)).pack()
+#nextApproachDate = Label(top, text="Next approach Date: " + str(sizeMax)).pack()
+#nearestMiss = Label(top, text="The nearest miss for this NEO was in " + str(sizeMax) + " by "+ str(sizeMax) + " Kilometers").pack() # Date and then distance
 
 # Toggle the text to appear when anything is entered through the combobox
 def toggleLabels():
     pass
 def comboUpdate():
     if combo.get() != "":
-        minAvgDiameter.pack_forget()
-        maxAvgDiameter.grid_forget()
+        minAvgDiameter.forget_pack()
+        maxAvgDiameter.forget_pack()
         
 # I found that you can create a default Canvas of Grids, could be useful, might include it for graphs.
 

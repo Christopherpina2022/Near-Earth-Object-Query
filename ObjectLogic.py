@@ -4,7 +4,7 @@ import ObjectArrays as Arrays
 from ObjectArrays import *
 from datetime import datetime
 
-def averageDiameter(avgMinDiameter, avgMaxDiameter):
+def averageDiameter(avgDiameter):
     # Find Average Min and Max Diameter of NEOs
     
     # Declare lists and setup to convert to average number
@@ -19,9 +19,10 @@ def averageDiameter(avgMinDiameter, avgMaxDiameter):
         maxDiameter.append(i[1])
     
     # Average number is Sum of all numbers / number of all items listed
-    avgMinDiameter = (sum(minDiameter)/len(minDiameter))
-    avgMaxDiameter = (sum(maxDiameter)/len(maxDiameter))
-    return (avgMinDiameter, avgMaxDiameter)
+    avgDiameter = []
+    avgDiameter.append(sum(minDiameter)/len(minDiameter))
+    avgDiameter.append(sum(maxDiameter)/len(maxDiameter))
+    return (avgDiameter)
     
 # Test Avg Diameter
 
