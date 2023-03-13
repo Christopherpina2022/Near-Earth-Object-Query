@@ -30,8 +30,9 @@ title = Label(top, text="NASA Close Encounter Query").pack()
 combo = ttk.Combobox(top, values= listItems).pack()
 
 #These widgets disappear after an item is selected and reappear after nothing is selected
-minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0])).pack()
-maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1])).pack()
+minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0]) + " Meters").pack()
+maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1]) + " Meters").pack()
+currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".").pack()
 
 # Creating all the data i want to pull per request, data will by default be hidden
 #minDiameter = Label(top, text="Min Diameter (meters): " + str(sizeMin)).pack()

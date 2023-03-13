@@ -20,8 +20,8 @@ def averageDiameter(avgDiameter):
     
     # Average number is Sum of all numbers / number of all items listed
     avgDiameter = []
-    avgDiameter.append(sum(minDiameter)/len(minDiameter))
-    avgDiameter.append(sum(maxDiameter)/len(maxDiameter))
+    avgDiameter.append(round(sum(minDiameter)/len(minDiameter)))
+    avgDiameter.append(round(sum(maxDiameter)/len(maxDiameter)))
     return (avgDiameter)
     
 # Test Avg Diameter
