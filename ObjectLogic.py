@@ -8,27 +8,28 @@ def averageDiameter():
     #Find Average Min and Max Diameter of NEOs
     
     # list is also returning the name, so we need to only use the 2nd list item from a bigger list, which
-    # could be done by creating a new list that only has the data from the 2nd list item per value
+    # could be done by creating a new list that only has the data from the 2nd list item per value.
     
-    minDiameterList()
-       
-    #sizeMin = sum()/len()
-    #print (sizeMin)
-    #sizeMax = sum(neoDiameter.objectSizeMax)/len(neoDiameter.objectSizeMax)
+    # For now all i want to do is create a function that lists the name and the diameter like Name, Diameter which
+    # can be used later when i want that data printed on the screen in the menu
+    
+    objectSizeMin = neoDiameterMin(objectSizeMin = [])
+    objectSizeMax = neoDiameterMax(objectSizeMax = [])
+    
+    minDiameter = []
+    maxDiameter = []
+    avgMinDiameter = 0
+    avgMaxDiameter = 0
+    
+    for i in (objectSizeMin):
+        minDiameter.append(i[1])
+    for i in (objectSizeMax):
+        maxDiameter.append(i[1])
 
-    #print(sizeMax, sizeMin)
-    #return(sizeMin, sizeMax)
-
+    print(minDiameter, maxDiameter)
+    
 # Test Avg Diameter
 averageDiameter()
-
-def minDiameterList():
-    minDiameter = []
-    minDiameter = neoDiameterMin(minDiameter(0,1))
-    return minDiameter
-    
-def maxDiameterList():
-    maxDiameter = []
 
 def nextEncounter():
     # Determine the amount of time until the next Close Encounter and what object it is
