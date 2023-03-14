@@ -13,6 +13,8 @@ menubar = Menu(top)
 top.config(menu=menubar)
 graphMenu = Menu(menubar, tearoff=False)
 menubar.add_command(label='About')#, command=aboutTopLevel)
+menubar.add_cascade(label='Graphs', menu=graphMenu)
+
 def aboutTopLevel():
     # About Toplevel Widget
     aboutMenu = Toplevel()
@@ -21,12 +23,18 @@ def aboutTopLevel():
     aboutText = Label(aboutMenu, text="This is a Program written using the NASA Near Earth Object Web Service and Python with Tkinter's UI.")
     aboutText.grid()
 
-graphMenu.add_command(label='Absolute Magnitude of NEOs by name')
-graphMenu.add_command(label='Absolute Magnitude of NEOs by diameters(Min)')
-graphMenu.add_command(label='Absolute Magnitude of NEOs by diameters(Max)')
-graphMenu.add_command(label='Miss Distance of NEOs by date')
+# Magnitude Menu items
+absoMagnitudeGraphs = Menu(menubar, tearoff=False)
+absoMagnitudeGraphs.add_command(label='By name')
+absoMagnitudeGraphs.add_command(label='By diameters(Min)')
+absoMagnitudeGraphs.add_command(label='By diameters(Max)')
+
+# Other Graphs
 graphMenu.add_command(label='Acceleration of NEOs by date')
-menubar.add_cascade(label='Graphs',menu=graphMenu,)
+graphMenu.add_cascade(label='Magnitude of NEOS', menu=absoMagnitudeGraphs)
+graphMenu.add_command(label='Miss Distance of NEOs by date')
+
+
 
 # Retrieve all the data needed to output to UI
 listItems = Arrays.neoName()

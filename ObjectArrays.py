@@ -55,22 +55,19 @@ def neoMissDistance():
 
 def hazardousNEOS():
     # Create 2 lists for Hazardous and Non-Hazardous Near Earth Objects
-    hazardousNEO = []
-    nonHazardousNEO = []
+    isNEOHazardous = []
     for i in Dict.CE_dict['near_earth_objects']:
-        for j in i['is_potentially_hazardous_asteroid']:   
-                print (j)  
-                #nonHazardousNEO.append(i['name_limited'])
-    print (hazardousNEO, nonHazardousNEO)
+        isNEOHazardous.append([i.get('name_limited'), i.get('is_potentially_hazardous_asteroid')])
+    print (isNEOHazardous)
     
-#hazardousNEOS()
+hazardousNEOS()
 
 def neoMagnitude(absoluteMagnitude):
     #Find the Absolute Magnitudes of all NEOs
     absoluteMagnitude=[]
     
     for i in Dict.CE_dict['near_earth_objects']:
-        absoluteMagnitude.append([i.get('absolute_magnitude_h'), i.get('name_limited')])
+        absoluteMagnitude.append([i.get('name_limited'), i.get('absolute_magnitude_h')])
         
     return absoluteMagnitude
         
