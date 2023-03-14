@@ -4,14 +4,18 @@ import ObjectArrays as Arrays
 import ObjectLogic as Logic
 from ObjectLogic import *
 
-# Create Menu Screen
-
+# Create Root window
 top = Tk()
 top.geometry('500x300')
 top.title('Near Earth Object Web Service (NeoWs) Query')
+
+# Create Menu
 menubar = Menu(top)
 top.config(menu=menubar)
 graphMenu = Menu(menubar, tearoff=False)
+absoMagnitudeGraphs = Menu(menubar, tearoff=False)
+
+# Top level menu options
 menubar.add_command(label='About')#, command=aboutTopLevel)
 menubar.add_cascade(label='Graphs', menu=graphMenu)
 
@@ -24,7 +28,7 @@ def aboutTopLevel():
     aboutText.grid()
 
 # Magnitude Menu items
-absoMagnitudeGraphs = Menu(menubar, tearoff=False)
+
 absoMagnitudeGraphs.add_command(label='By name')
 absoMagnitudeGraphs.add_command(label='By diameters(Min)')
 absoMagnitudeGraphs.add_command(label='By diameters(Max)')
