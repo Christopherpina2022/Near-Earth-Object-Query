@@ -41,7 +41,7 @@ def neoMissDistance():
     missDistance = []
     for i in Dict.CE_dict['near_earth_objects']:
         for j in i['close_approach_data']:
-            print (i['close_approach_data'])
+            print (j)
             for k in j['miss_distance']:
                 if k == 'lunar':
                     missDistance.append([i["name_limited"], j["close_approach_date"], j['miss_distance'][k]])
@@ -49,7 +49,7 @@ def neoMissDistance():
     #print (missDistance)
     return missDistance
 
-neoMissDistance()
+#neoMissDistance()
 # add additional information to see if we can look up the magnitude, relative velocity, is it dangerous,
 # and maybe the link to more info about that NEO
 
@@ -64,3 +64,13 @@ def hazardousNEOS():
     print (hazardousNEO, nonHazardousNEO)
     
 #hazardousNEOS()
+
+def neoMagnitude(absoluteMagnitude):
+    #Find the Absolute Magnitudes of all NEOs
+    absoluteMagnitude=[]
+    
+    for i in Dict.CE_dict['near_earth_objects']:
+        absoluteMagnitude.append([i.get('absolute_magnitude_h'), i.get('name_limited')])
+        
+    return absoluteMagnitude
+        
