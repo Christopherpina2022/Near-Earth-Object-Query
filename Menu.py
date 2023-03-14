@@ -8,50 +8,53 @@ from ObjectLogic import *
 top = Tk()
 top.geometry('500x300')
 top.title('Near Earth Object Web Service (NeoWs) Query')
-
-# Creates a menu that will be used later
 menubar = Menu(top)
 top.config(menu=menubar)
 file_menu = Menu(menubar, tearoff=False)
 menubar.add_command(label='About')
-file_menu.add_command(label='Diameters')
-file_menu.add_command(label='Close Encounters')
+file_menu.add_command(label='Absolute Magnitude of NEOs by diameters(Min)')
+file_menu.add_command(label='Absolute Magnitude of NEOs by diameters(Max)')
+file_menu.add_command(label='Miss Distance of NEOs by date')
+file_menu.add_command(label='Acceleration of NEOs by date')
 menubar.add_cascade(label='Graphs',menu=file_menu,)
 
-# Declare options from all names in Dictionary
+# Retrieve all the data needed to output to UI
 listItems = Arrays.neoName()
 clicked = StringVar()
-
-# Declare sizes of all NEOs
 avgDiameter = averageDiameter(avgDiameter=[])
 
 # Create all visual items on application
-title = Label(top, text="NASA Close Encounter Query").pack()
-combo = ttk.Combobox(top, values= listItems).pack()
-
-#These widgets disappear after an item is selected and reappear after nothing is selected
-minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0]) + " Meters").pack()
-maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1]) + " Meters").pack()
-currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".").pack()
-closestMiss = Label(top, text="The closest Object to miss the earth was "+ '' + ' by ' + '' + 'Lunar Units (400k Kilometers/Unit)').pack()
-
-# Creating all the data i want to pull per request, data will by default be hidden
-#minDiameter = Label(top, text="Min Diameter (meters): " + str(sizeMin)).pack()
-#maxDiameter = Label(top, text="Max Diameter (meters): " + str(sizeMax)).pack()
-#firstObservation = Label(top, text="First observed in : " + str(sizeMax)).pack()
-#neoMagnitude = Label(top, text="Magnitude: " +str(sizeMax)).pack()
-#nextApproachDate = Label(top, text="Next approach Date: " + str(sizeMax)).pack()
-#nearestMiss = Label(top, text="The nearest miss for this NEO was in " + str(sizeMax) + " by "+ str(sizeMax) + " Kilometers").pack() # Date and then distance
-
-# Toggle the text to appear when anything is entered through the combobox
-def toggleLabels():
-    pass
-def comboUpdate():
-    if combo.get() != "":
-        minAvgDiameter.forget_pack()
-        maxAvgDiameter.forget_pack()
-        
+displayFrame= Frame(top, borderwidth=5, relief=RIDGE, width=250, height=100)
+title = Label(top, text="NASA Close Encounter Query")
+combo = ttk.Combobox(top, values= listItems)
+minAvgDiameter = Label(top, text="Average Min Diameter: " + str(avgDiameter[0]) + " Meters")
+maxAvgDiameter = Label(top, text="Average Max Diameter: " + str(avgDiameter[1]) + " Meters")
+currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".")
+closestMiss = Label(top, text="The closest Object to miss the earth was "+ '' + ' by ' + '' + 'Lunar Units (400k Kilometers/Unit)')
+minDiameter = Label(top, text="Min Diameter (meters): " + '')
+maxDiameter = Label(top, text="Max Diameter (meters): " + '')
+firstObservation = Label(top, text="First observed in : " + '')
+neoMagnitude = Label(top, text="Magnitude: " )
+nextApproachDate = Label(top, text="Next approach Date: " )
+nearestMiss = Label(top, text="The nearest miss for this NEO was in "   " Kilometers") # Date and then distance
+confirmButton = Button(top, text="Enter")
 # I found that you can create a default Canvas of Grids, could be useful, might include it for graphs.
+
+# Position all the widgets for this app
+displayFrame.grid(column=0, row=0)
+title.grid(column=1, row=0, sticky=NW)
+combo.grid(column=1, row=1, columnspan=2)
+minAvgDiameter.grid(column=0, row=0)
+maxAvgDiameter.grid(column=0, row=0)
+currentTime.grid(column=0, row=0)
+confirmButton.grid(column=1, row=1)
+closestMiss.grid_forget()
+minDiameter.grid_forget()
+maxDiameter.grid_forget()
+firstObservation.grid_forget()
+neoMagnitude.grid_forget()
+nextApproachDate.grid_forget()
+nearestMiss.grid_forget()
 
 # Execute application
 top.mainloop()

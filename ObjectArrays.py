@@ -40,7 +40,6 @@ def neoMissDistance():
     # Create an array that includes the Name, date, and lunar distance of each NEO's miss distance
     missDistance = []
     for i in Dict.CE_dict['near_earth_objects']:
-        print(i)
         for j in i['close_approach_data']:
             print (i['close_approach_data'])
             for k in j['miss_distance']:
@@ -51,7 +50,7 @@ def neoMissDistance():
     return missDistance
 
 neoMissDistance()
-# add additional information to see if we can look up the magnitude, is it dangerous,
+# add additional information to see if we can look up the magnitude, relative velocity, is it dangerous,
 # and maybe the link to more info about that NEO
 
 def hazardousNEOS():

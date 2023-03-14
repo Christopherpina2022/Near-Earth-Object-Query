@@ -45,4 +45,4 @@ def closestEncounter():
     print (lowestCE)
     #return lowestCE
     
-closestEncounter()
+#closestEncounter()
