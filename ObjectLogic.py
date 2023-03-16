@@ -4,6 +4,8 @@ import ObjectArrays as Arrays
 from ObjectArrays import *
 from datetime import datetime
 
+# This is a test
+
 def averageDiameter(avgDiameter):
     # Find Average Min and Max Diameter of NEOs
     
