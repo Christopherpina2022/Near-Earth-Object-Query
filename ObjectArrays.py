@@ -53,14 +53,12 @@ def neoMissDistance():
 # add additional information to see if we can look up the magnitude, relative velocity, is it dangerous,
 # and maybe the link to more info about that NEO
 
-def hazardousNEOS():
+def hazardousNEOS(isNEOHazardous):
     # Create 2 lists for Hazardous and Non-Hazardous Near Earth Objects
     isNEOHazardous = []
     for i in Dict.CE_dict['near_earth_objects']:
         isNEOHazardous.append([i.get('name_limited'), i.get('is_potentially_hazardous_asteroid')])
-    print (isNEOHazardous)
-    
-hazardousNEOS()
+    return isNEOHazardous
 
 def neoMagnitude(absoluteMagnitude):
     #Find the Absolute Magnitudes of all NEOs

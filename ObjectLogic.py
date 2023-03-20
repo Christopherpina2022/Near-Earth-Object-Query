@@ -48,3 +48,15 @@ def closestEncounter():
     #return lowestCE
     
 #closestEncounter()
+
+def isNEOHazardous():
+    # create logic that Prints out Yes or No as a string determined by the input given
+    NEO = "Eros"
+    Neos = hazardousNEOS(isNEOHazardous=[])
+    
+    for i in Neos:
+        if i[0] == testNEO:
+            print (i)
+        
+        
+#isNEOHazardous()

@@ -6,7 +6,7 @@ from ObjectLogic import *
 
 # Create Root window
 top = Tk()
-top.geometry('500x300')
+top.geometry('700x400')
 top.title('Near Earth Object Web Service (NeoWs) Query')
 
 # Create Menu
@@ -49,19 +49,43 @@ avgDiameter = averageDiameter(avgDiameter=[])
 displayFrame= Frame(top, borderwidth=5, relief=RIDGE, width=300, height=150)
 
 title = Label(top, text="NASA Close Encounter Query")
-combo = ttk.Combobox(top, values= listItems)
+combo = ttk.Combobox(top, values= listItems, state='readonly')
+confirmButton = Button(top, text="Find Info about NEO")
+clearButton = Button(top, text="Clear input")
+currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".")
+
 minAvgDiameter = Label(displayFrame, text="Average Min Diameter: " + str(avgDiameter[0]) + " Meters")
 maxAvgDiameter = Label(displayFrame, text="Average Max Diameter: " + str(avgDiameter[1]) + " Meters")
-currentTime = Label(top, text ="It is currently " + str(datetime.now()) + ".")
-closestMiss = Label(top, text="The closest Object to miss the earth was "+ '' + ' by ' + '' + 'Lunar Units (400k Kilometers/Unit)')
-minDiameter = Label(top, text="Min Diameter (meters): " + '')
-maxDiameter = Label(top, text="Max Diameter (meters): " + '')
-firstObservation = Label(top, text="First observed in : " + '')
-neoMagnitude = Label(top, text="Magnitude: " )
-nextApproachDate = Label(top, text="Next approach Date: " )
-nearestMiss = Label(top, text="The nearest miss for this NEO was in "   " Kilometers") # Date and then distance
-confirmButton = Button(top, text="Enter")
-# I found that you can create a default Canvas of Grids, could be useful, might include it for graphs.
+closestMiss = Label(displayFrame, text="The closest Object to miss the earth was "+ '' + ' by ' + '' + 'Lunar Units (400k Kilometers/Unit)')
+minDiameter = Label(displayFrame, text="Min Diameter (meters): " + '')
+maxDiameter = Label(displayFrame, text="Max Diameter (meters): " + '')
+firstObservation = Label(displayFrame, text="First observed in : " + '')
+neoMagnitude = Label(displayFrame, text="Magnitude: " )
+nextApproachDate = Label(displayFrame, text="Next approach Date: " )
+nearestMiss = Label(displayFrame, text="The nearest miss for this NEO was in "   " Kilometers") # Date and then distance
+
+# Define event functions
+def revealInfo():
+    minAvgDiameter.grid_forget()
+    maxAvgDiameter.grid_forget()
+    closestMiss.grid(column=0, row=0)
+    minDiameter.grid(column=0, row=1)
+    maxDiameter.grid(column=0, row=2)
+    firstObservation.grid(column=0, row=3)
+    neoMagnitude.grid(column=0, row=4)
+    nextApproachDate.grid(column=0, row=5)
+    nearestMiss.grid(column=0, row=6)
+    
+def hideInfo(eventObject):
+    minAvgDiameter.grid(column=0, row=0)
+    maxAvgDiameter.grid(column=0, row=2)
+    closestMiss.grid_forget()
+    minDiameter.grid_forget()
+    maxDiameter.grid_forget()
+    firstObservation.grid_forget()
+    neoMagnitude.grid_forget()
+    nextApproachDate.grid_forget()
+    nearestMiss.grid_forget()
 
 # Position all the widgets for this app
 top.grid_columnconfigure(0, weight=3)
@@ -72,19 +96,13 @@ displayFrame.columnconfigure(0, weight=1)
 
 title.grid(column=1, row=0, sticky=N)
 combo.grid(column=1, row=0, sticky=S)
-confirmButton.grid(column=1, row=1, sticky=S)
+confirmButton.grid(column=1, row=1, sticky=W)
+clearButton.grid(column=1, row=1, sticky=E)
 
 minAvgDiameter.grid(column=0, row=0)
 maxAvgDiameter.grid(column=0, row=2)
 currentTime.grid(column=0, row=1)
 
-closestMiss.grid_forget()
-minDiameter.grid_forget()
-maxDiameter.grid_forget()
-firstObservation.grid_forget()
-neoMagnitude.grid_forget()
-nextApproachDate.grid_forget()
-nearestMiss.grid_forget()
-
+revealInfo()
 # Execute application
 top.mainloop()
