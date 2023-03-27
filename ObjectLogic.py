@@ -40,17 +40,17 @@ def nextEncounter():
             nextEncounterTime = Arrays.neoTimes.objectTime(i)
             return nextEncounterTime
 
-def closestEncounter():
-    # Find the lowst number by Lunar units from how far a NEO missed Earth
-    lowestCE = neoMissDistance(missDistance=[])
-    print (lowestCE)
-    #return lowestCE
-    
-#closestEncounter()
+def closestEncounter(lowestCE):
+    # Find the lowest number by Lunar units from how far a NEO missed Earth
+    lowestCE = ['name', 'date', 999]
+    listMissDistance = neoMissDistance(missDistance=[])
+    for i in listMissDistance:
+        if float(i[2]) < float(lowestCE[2]):
+            lowestCE = i  
+    return lowestCE
 
 def isNEOHazardous():
     # create logic that Prints out Yes or No as a string determined by the input given
-    NEO = "Eros"
     Neos = hazardousNEOS(isNEOHazardous=[])
     
     for i in Neos:
