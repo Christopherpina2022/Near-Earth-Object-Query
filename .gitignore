@@ -2,5 +2,3 @@ venv
 .env
 __pycache__
 API.json
-index.py
-Menu.py
