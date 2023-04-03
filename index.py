@@ -1,6 +1,6 @@
 # This version of the app implements a command line version of the program to help speed up the production of this app until
 # I can fully understand a bit more of Front end development.
-from getpass import getpass
+
 
 def menu():
     menuList = [1,2,3]
@@ -13,12 +13,13 @@ def menu():
         match optionSelect:
             case '1':
                 # Print out all names of NEOS in groups of Ten
-                print ("you selected 1")
+                print ("List of all Near Earth Objects (Press any key to continue List)")
             case '2':
-                # 
-                print ("You selected 2")
+                # Ask user to input their NEO of choice
+                print ("Please enter a NEO (You can find names in option 1)")
             case '3':
-                print ("You selected 3")
+                # Select from various charts
+                print ("Please Select a chart:")
             case '4':
                 print("Goodbye.")
                 keepGoing = False
