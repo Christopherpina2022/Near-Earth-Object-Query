@@ -3,8 +3,6 @@
 import ObjectArrays as Arrays
 from ObjectArrays import *
 import os
-import ObjectLogic as Logic
-from ObjectLogic import *
 
 def menu():
     menuList = [1,2,3]
