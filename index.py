@@ -3,6 +3,8 @@
 import ObjectArrays as Arrays
 from ObjectArrays import *
 import os
+import ObjectLogic as Logic
+from ObjectLogic import *
 
 def menu():
     menuList = [1,2,3]
@@ -14,7 +16,7 @@ def menu():
         optionSelect = input('Please enter an option: \n')
         # Basic validation loop
         neoNames = neoName(objectName=[])
-        neoSelected = []
+        neoSelected = ['Init']
         match optionSelect:
             case '1':
                 os.system('cls')
@@ -36,22 +38,27 @@ def menu():
                 stopSelect = True
                 while stopSelect == True:
                     neoSelect = input('Select a name ("quit" to exit option)')
-                    if neoSelect == neoNames:
-                        print ("found an item")
-                    elif neoSelect != neoNames:
-                        print ("Please select a valid name.")
-                    elif neoSelect == 'quit':
-                        stopSelect = False
+                    for i in neoNames:
+                        if neoSelect == i:
+                            print ("found an item")
+                            # Start using data from Object Logic and Arrays
+                            
+                            neoSelected[0] = neoSelect
+                            input("Press enter to continue:")
+                            stopSelect = False
+                        elif neoSelect == str('quit'):
+                            stopSelect = False
             case '3':
                 # Select from various charts
                 os.system('cls')
                 objectSelected = True
                 while objectSelected == True:
-                    if neoSelected == []:
+                    if neoSelected == ['Init']:
                         print("Please select a NEO before accessing this option")
                         objectSelected = False
-                    elif neoSelected != []:
+                    elif neoSelected != ['Init']:
                         print ("Please Select a chart:")
+                        print ("1: Acceleration over time\n 2: Dates observed over time\n 3: Five closest encounters")
             case '4':
                 print("Goodbye.")
                 keepGoing = False

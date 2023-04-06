@@ -1,6 +1,4 @@
 #import DictionaryInit as Dict
-#import index
-#from index import *
 import ObjectArrays as Arrays
 from ObjectArrays import *
 from datetime import datetime
@@ -53,7 +51,7 @@ def closestEncounter(lowestCE):
 def isNEOHazardous(testNeo):
     # create logic that Prints out Yes or No as a string determined by the input given
     Neos = hazardousNEOS(isNEOHazardous=[])
-    testNeo = index.inputNEO()
+    testNeo = 'pass'
     
     for i in Neos:
         if i[0] == testNeo:
