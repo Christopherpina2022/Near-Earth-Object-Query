@@ -12,7 +12,7 @@ def menu():
     os.system('cls')
     print ('Near Earth objet Web Service Query (Command Line version) \nby Chris Pina\n')
     while keepGoing == True:  
-        print ('1: List all Near Earth Objects \n2: lookup information about a Near Earth Object \n3: Lookup charts by selected NEO \n4:Quit application')
+        print ('1: List all Near Earth Objects \n2: lookup information about a Near Earth Object \n3: Lookup charts by selected NEO \n4: Quit application')
         optionSelect = input('Please enter an option: \n')
         # Basic validation loop
         neoNames = neoName(objectName=[])
