@@ -1,7 +1,7 @@
 import DictionaryInit as Dict
 import numpy as py
 
-def neoName():
+def neoName(objectName):
     # Iterate all names in NEO API to create a list of all items
     objectName = []
     for i in Dict.CE_dict['near_earth_objects']:
