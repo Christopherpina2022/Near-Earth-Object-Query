@@ -8,6 +8,7 @@ from ObjectLogic import *
 
 def menu():
     keepGoing = True
+    neoSelected = ['Init']
     while keepGoing == True:  
         os.system('cls')
         print ('Near Earth objet Web Service Query (Command Line version) \nby Chris Pina\n')
@@ -15,7 +16,6 @@ def menu():
         optionSelect = input('Please enter an option: \n')
         # Basic validation loop
         neoNames = neoName(objectName=[])
-        neoSelected = ['Init']
         match optionSelect:
             case '1':
                 os.system('cls')
@@ -43,23 +43,23 @@ def menu():
                             selectedMinDiameter = singleMinDiameter(selectedMinDiameter = '', selection = neoSelect)
                             selectedMaxDiamater = singleMaxDiameter(selectedMaxDiameter = '', selection = neoSelect)
                             selectedAbsoluteMagnitude = singleAbsoluteMagnitude(selectedAbsoluteMagnitude = '', selection = neoSelect)
-                            selectedFirstObservation = ''
-                            selectedIsItHazardous = ''
+                            selectedFirstObservation = firstObserved(selectedFirstObserved= '', selection = neoSelect)
+                            selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous= '', selection= neoSelect)
                             selectedNearestMiss = ''
                             selectedNextEncounter = ''
-                            CONST_LUNAR_CONVERT = 384399
+                            CONST_LUNAR_CONVERT = 384399 # Distance between the surface of Earth to the Moon
 
                             # Start using data from Object Logic and Arrays
                             os.system('cls')
                             print ("Selected NEO: " + i + ", first discovered in " + selectedFirstObservation + ".")
                             print("The minimum diameter of this NEO is " + selectedMinDiameter + ".")
                             print("The maximum diameter of this NEO is " + selectedMaxDiamater + ".")
-                            # is the object dangerous?
+                            print(selectedIsItHazardous)
                             print("The absolute magnitude for this NEO is " + selectedAbsoluteMagnitude + ".")
                             # Convert Lunar to Kilometers (384,399 Kilometers/Unit)
-                            print("The nearest miss for this NEO was in " + " by " + " Lunar units (" + selectedNearestMiss + " Kilometers).")
-                            print("The next close encounter will be in " + " and will miss by " + selectedNextEncounter + " Lunar units (" + " Kilometers).")
-                            neoSelected[0] = neoSelect
+                            #print("The nearest miss for this NEO was in " + selectedNearestMiss " by " +  " Lunar units (" + " Kilometers).")
+                            #print("The next close encounter will be in " + selectedNextEncounter " and will miss by " + " Lunar units (" + " Kilometers).")
+                            neoSelected = [neoSelect]
                             input("Press enter to continue:")
                             stopSelect = False
                         elif neoSelect == str('quit'):
@@ -73,7 +73,7 @@ def menu():
                         print("Please select a NEO before accessing this option")
                         input("Press enter to continue...")
                         objectSelected = False
-                    elif neoSelected != ['Init']:
+                    elif neoSelected == [neoSelect]:
                         print ("Please Select a chart:")
                         print ("1: Acceleration over time\n 2: Dates observed over time\n 3: Five closest encounters")
             case '4':

@@ -45,3 +45,21 @@ def singleAbsoluteMagnitude(selectedAbsoluteMagnitude, selection):
         if i[0] == selection:
             selectedAbsoluteMagnitude = str(i[1])
     return selectedAbsoluteMagnitude
+
+def firstObserved(selectedFirstObserved, selection):
+    firstObserved = firstObservation(firstObserved=[])
+    for i in firstObserved:
+        if i[0] == selection:
+            selectedFirstObserved = str(i[1])
+    return selectedFirstObserved
+
+def singleHazardousNEO(selectedIsItHazardous, selection):
+    selectedIsItHazardous = ''
+    isNEOHazardous = hazardousNEOS(isNEOHazardous=[])
+    for i in isNEOHazardous:
+        if i[0] == selection:
+            if i[1] == True:
+                selectedIsItHazardous = "This object is hazardous."
+            elif i[1] == False:
+                selectedIsItHazardous = "This object is not hazardous."
+    return selectedIsItHazardous

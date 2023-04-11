@@ -58,3 +58,9 @@ def neoMagnitude(absoluteMagnitude):
         
     return absoluteMagnitude
         
+def firstObservation(firstObserved):
+    firstObserved = []
+    for i in Dict.CE_dict['near_earth_objects']:
+        for j in i ['orbital_data']['first_observation_date']:
+            firstObserved.append([i.get('name_limited'), str(i['orbital_data']['first_observation_date'])])
+    return firstObserved
