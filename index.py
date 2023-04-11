@@ -43,10 +43,10 @@ def menu():
                             selectedMinDiameter = singleMinDiameter(selectedMinDiameter = '', selection = neoSelect)
                             selectedMaxDiamater = singleMaxDiameter(selectedMaxDiameter = '', selection = neoSelect)
                             selectedAbsoluteMagnitude = singleAbsoluteMagnitude(selectedAbsoluteMagnitude = '', selection = neoSelect)
-                            selectedFirstObservation = firstObserved(selectedFirstObserved= '', selection = neoSelect)
-                            selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous= '', selection= neoSelect)
-                            selectedNearestMiss = ''
-                            selectedNextEncounter = ''
+                            selectedFirstObservation = firstObserved(selectedFirstObserved = '', selection = neoSelect)
+                            selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous = '', selection = neoSelect)
+                            selectedNearestMiss = singleNearestMiss(selectedNearestMiss = [] , selection = neoSelect)
+                            selectedNextEncounter = []
                             CONST_LUNAR_CONVERT = 384399 # Distance between the surface of Earth to the Moon
 
                             # Start using data from Object Logic and Arrays
@@ -57,8 +57,14 @@ def menu():
                             print(selectedIsItHazardous)
                             print("The absolute magnitude for this NEO is " + selectedAbsoluteMagnitude + ".")
                             # Convert Lunar to Kilometers (384,399 Kilometers/Unit)
-                            #print("The nearest miss for this NEO was in " + selectedNearestMiss " by " +  " Lunar units (" + " Kilometers).")
-                            #print("The next close encounter will be in " + selectedNextEncounter " and will miss by " + " Lunar units (" + " Kilometers).")
+                            lunarNearestMiss = selectedNearestMiss[1] * CONST_LUNAR_CONVERT
+                            #lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
+                            print("The nearest miss for this NEO will be in " + selectedNearestMiss[0], 
+                                  "and will miss by \n" + str(selectedNearestMiss[1]),
+                                  "Lunar units (" + str(lunarNearestMiss), "Kilometers).")
+                            print("The next close encounter will be in " + selectedNextEncounter[0],
+                                  " and will miss by " + selectedNextEncounter[1],
+                                  " Lunar units (" + lunarNextEncounter, " Kilometers).")
                             neoSelected = [neoSelect]
                             input("Press enter to continue:")
                             stopSelect = False

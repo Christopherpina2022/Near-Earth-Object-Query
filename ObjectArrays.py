@@ -52,10 +52,8 @@ def hazardousNEOS(isNEOHazardous):
 def neoMagnitude(absoluteMagnitude):
     #Find the Absolute Magnitudes of all NEOs
     absoluteMagnitude=[]
-    
     for i in Dict.CE_dict['near_earth_objects']:
         absoluteMagnitude.append([i.get('name_limited'), i.get('absolute_magnitude_h')])
-        
     return absoluteMagnitude
         
 def firstObservation(firstObserved):
@@ -64,3 +62,10 @@ def firstObservation(firstObserved):
         for j in i ['orbital_data']['first_observation_date']:
             firstObserved.append([i.get('name_limited'), str(i['orbital_data']['first_observation_date'])])
     return firstObserved
+
+def neoEncounterDates(neoEncounters):
+    neoEncounters = []
+    for i in Dict.CE_dict['near_earth_objects']:
+        for j in i["close_approach_data"]:
+            neoEncounters.append([i.get('name_limited'), j["close_approach_date"], float(j['miss_distance']['lunar'])])
+    return neoEncounters

@@ -63,3 +63,18 @@ def singleHazardousNEO(selectedIsItHazardous, selection):
             elif i[1] == False:
                 selectedIsItHazardous = "This object is not hazardous."
     return selectedIsItHazardous
+
+def singleNearestMiss(selectedNearestMiss, selection):
+    selectedNearestMiss = []
+    selectedTempList = []
+    neoEncounters = neoEncounterDates(neoEncounters=[])
+    for i in neoEncounters:
+        if i[0] == selection:
+            selectedTempList.append([i[1], i[2]])
+    x = 999
+    for i in selectedTempList:
+        tempMissDistance = i[1]
+        if tempMissDistance < x:
+            selectedNearestMiss = [i[0], i[1]]
+            x = i[1]
+    return selectedNearestMiss
