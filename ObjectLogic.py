@@ -78,3 +78,24 @@ def singleNearestMiss(selectedNearestMiss, selection):
             selectedNearestMiss = [i[0], i[1]]
             x = i[1]
     return selectedNearestMiss
+
+def singleNextEncounter(selectedNextEncounter, selection):
+    # establish the current time in YYYY-MM-DD Format
+    currentTime = datetime.now()
+    tempEncounterTimes = []
+    neoEncounters = neoEncounterDates(neoEncounters = [])
+    nextEncounter = currentTime
+    # Convert String to Date time format then append into a Temp list
+    for i in neoEncounters:
+        if i[0] == selection:
+            fixedDate = datetime.strptime(i[1], '%Y-%m-%d')
+            #fixedDateFromString = datetime.strftime(fixedDate, '%Y-%m-%d')
+            tempEncounterTimes.append(fixedDate)
+    for i in tempEncounterTimes:
+        if i >= currentTime:
+            if i <= nextEncounter:
+                nextEncounter = i
+    print (currentTime)
+    print (tempEncounterTimes)
+    print(nextEncounter)
+singleNextEncounter(selectedNextEncounter = [], selection = 'Eros')

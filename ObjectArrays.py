@@ -57,6 +57,7 @@ def neoMagnitude(absoluteMagnitude):
     return absoluteMagnitude
         
 def firstObservation(firstObserved):
+    # Find the first observed dates for all NEOs
     firstObserved = []
     for i in Dict.CE_dict['near_earth_objects']:
         for j in i ['orbital_data']['first_observation_date']:
@@ -64,6 +65,7 @@ def firstObservation(firstObserved):
     return firstObserved
 
 def neoEncounterDates(neoEncounters):
+    # Find all close approach dates for every NEO
     neoEncounters = []
     for i in Dict.CE_dict['near_earth_objects']:
         for j in i["close_approach_data"]:
