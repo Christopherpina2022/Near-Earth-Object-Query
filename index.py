@@ -33,10 +33,11 @@ def menu():
             case '2':
                 os.system('cls')
                 # Ask user to input their NEO of choice
-                print ("Please enter a NEO (You can find names in option 1)")
+                print ("Entering a NEO provides various information about your selection and")
+                print ("allows you to lookup charts for our selection. (You can find names in option 1)")
                 stopSelect = True
                 while stopSelect == True:
-                    neoSelect = input('Select a name ("quit" to exit option)')
+                    neoSelect = input('Select a name (Enter nothing to exit option)')
                     for i in neoNames:
                         if neoSelect == i:
                             # Declare variables and constants
@@ -60,24 +61,38 @@ def menu():
                             lunarNearestMiss = selectedNearestMiss[1] * CONST_LUNAR_CONVERT
                             lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
                             print("The nearest miss for this NEO is observed to be in " + selectedNearestMiss[0], "and will miss by " + str(selectedNearestMiss[1]),"Lunar units (" + str(lunarNearestMiss), "Kilometers).")
-                            print("The next close encounter will be in " + selectedNextEncounter[0], "and will miss by " + str(selectedNextEncounter[1]), "Lunar units (" + str(lunarNextEncounter), " Kilometers).")
+                            print("The next close encounter will be in " + selectedNextEncounter[0], "and will miss by " + str(selectedNextEncounter[1]), "Lunar units (" + str(lunarNextEncounter), "Kilometers).")
                             neoSelected = [neoSelect]
                             input("Press enter to continue:")
                             stopSelect = False
-                        elif neoSelect == str('quit'):
+                        elif neoSelect == str(''):
                             stopSelect = False
             case '3':
                 # Select from various charts
                 os.system('cls')
                 objectSelected = True
+                chartSelected = True
                 while objectSelected == True:
                     if neoSelected == ['Init']:
                         print("Please select a NEO before accessing this option")
                         input("Press enter to continue...")
                         objectSelected = False
                     elif neoSelected == [neoSelect]:
-                        print ("Please Select a chart:")
-                        print ("1: Acceleration over time\n 2: Dates observed over time\n 3: Five closest encounters")
+                        print ("Charts available to see for selected object: ")
+                        print ("1: Acceleration over time\n2: Dates observed over time\n3: Five closest encounters\n4: Back to main menu")
+                        chartChosen = input ("Please select a chart:")
+                        while chartSelected == True:
+                            match chartChosen:
+                                case 1:
+                                    pass
+                                case 2:
+                                    pass
+                                case 3:
+                                    pass
+                                case 4:
+                                    chartSelected = False
+                                case _:
+                                    pass
             case '4':
                 print("Goodbye.")
                 keepGoing = False

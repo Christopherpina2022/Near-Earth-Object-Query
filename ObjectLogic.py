@@ -98,13 +98,11 @@ def singleNextEncounter(selectedNextEncounter, selection):
     for i in neoEncounters:
         if i[0] == selection:
             fixedDate = datetime.strptime(i[1], '%Y-%m-%d')
-            #fixedDateFromString = datetime.strftime(fixedDate, '%Y-%m-%d')
             tempEncounterTimes.append([fixedDate, i[2], CONST_PLACEHOLDER])
     # Find the smallest difference of all items in Temp list by subtracting the time with the current date
-    # I am aware that this logic is due to have a bug, but this took like 3 hours to get working
     closestTimeDelta = CONST_DELTA_PLACEHOLD
     for i in tempEncounterTimes:
-        nextEncounterDifference = lambda x: abs(x - currentTime)
+        nextEncounterDifference = lambda x: x - currentTime
         itemDifference = nextEncounterDifference(i[0])
         if itemDifference >= timedelta(days=0):
             if  itemDifference < closestTimeDelta:
