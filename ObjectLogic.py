@@ -86,7 +86,7 @@ def singleNextEncounter(selectedNextEncounter, selection):
     encounterTimes = []
     neoEncounters = neoEncounterDates(neoEncounters = [])
     CONST_PLACEHOLDER = 99
-    CONST_DELTA_PLACEHOLD = datetime.timedelta(days=9999999)
+    CONST_DELTA_PLACEHOLD = timedelta(days=9999999)
     # Convert String to Date time format then append into a Temp list
     for i in neoEncounters:
         if i[0] == selection:
@@ -94,18 +94,14 @@ def singleNextEncounter(selectedNextEncounter, selection):
             #fixedDateFromString = datetime.strftime(fixedDate, '%Y-%m-%d')
             tempEncounterTimes.append([fixedDate, i[2], CONST_PLACEHOLDER])
     # Find the smallest difference of all items in Temp list by subtracting the time with the current date
+    # I am aware that this logic is due to have a bug, but this took like 3 hours to get working
     closestTimeDelta = CONST_DELTA_PLACEHOLD
     for i in tempEncounterTimes:
         nextEncounterDifference = lambda x: abs(x - currentTime)
-        if nextEncounterDifference[i[0]] < closestTimeDelta:
-            closestTimeDelta = nextEncounterDifference[i[0]]
-            selectedNextEncounter = i
-            print (selectedNextEncounter)
-    
-
-
-    #selectedNextEncounter = [nextEncounter.strftime('%Y-%m-%d'), ]
-    #print(selectedNextEncounter)
+        itemDifference = nextEncounterDifference(i[0])
+        if itemDifference >= timedelta(days=0):
+            if  itemDifference < closestTimeDelta:
+                closestTimeDelta = itemDifference
+                fixedDateFromString = datetime.strftime(i[0], '%Y-%m-%d')
+                selectedNextEncounter = [fixedDateFromString, i[1]]
     return selectedNextEncounter
-
-singleNextEncounter(selectedNextEncounter = [], selection = 'Eros')
