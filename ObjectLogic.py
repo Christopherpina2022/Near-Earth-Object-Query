@@ -40,6 +40,7 @@ def singleMaxDiameter(selectedMaxDiameter, selection):
     return selectedMaxDiameter
 
 def singleAbsoluteMagnitude(selectedAbsoluteMagnitude, selection):
+    # Determine Absolute magnitude based off selected NEO
     absoluteMagnitude = neoMagnitude(absoluteMagnitude=[])
     for i in absoluteMagnitude:
         if i[0] == selection:
@@ -47,6 +48,7 @@ def singleAbsoluteMagnitude(selectedAbsoluteMagnitude, selection):
     return selectedAbsoluteMagnitude
 
 def firstObserved(selectedFirstObserved, selection):
+    # Identify what the first observed date is based off selected NEO
     firstObserved = firstObservation(firstObserved=[])
     for i in firstObserved:
         if i[0] == selection:
@@ -54,6 +56,7 @@ def firstObserved(selectedFirstObserved, selection):
     return selectedFirstObserved
 
 def singleHazardousNEO(selectedIsItHazardous, selection):
+    # Determine if selected NEO is Hazardous
     selectedIsItHazardous = ''
     isNEOHazardous = hazardousNEOS(isNEOHazardous=[])
     for i in isNEOHazardous:
@@ -65,13 +68,16 @@ def singleHazardousNEO(selectedIsItHazardous, selection):
     return selectedIsItHazardous
 
 def singleNearestMiss(selectedNearestMiss, selection):
+    # find the smallest miss distance for a selected object
+    # Declare local variables and constants
     selectedNearestMiss = []
     selectedTempList = []
+    CONST_PLACEHOLDER = 999
     neoEncounters = neoEncounterDates(neoEncounters=[])
     for i in neoEncounters:
         if i[0] == selection:
             selectedTempList.append([i[1], i[2]])
-    x = 999
+    x = CONST_PLACEHOLDER
     for i in selectedTempList:
         tempMissDistance = i[1]
         if tempMissDistance < x:
@@ -81,6 +87,7 @@ def singleNearestMiss(selectedNearestMiss, selection):
 
 def singleNextEncounter(selectedNextEncounter, selection):
     # establish the current time in YYYY-MM-DD Format
+    # Declare local variables and constants
     currentTime = datetime.now()
     tempEncounterTimes = []
     encounterTimes = []
@@ -101,6 +108,7 @@ def singleNextEncounter(selectedNextEncounter, selection):
         itemDifference = nextEncounterDifference(i[0])
         if itemDifference >= timedelta(days=0):
             if  itemDifference < closestTimeDelta:
+                # Declare current value as the next encounter and format date time back to string to be read by index
                 closestTimeDelta = itemDifference
                 fixedDateFromString = datetime.strftime(i[0], '%Y-%m-%d')
                 selectedNextEncounter = [fixedDateFromString, i[1]]
