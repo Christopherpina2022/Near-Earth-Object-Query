@@ -84,18 +84,17 @@ def singleNextEncounter(selectedNextEncounter, selection):
     currentTime = datetime.now()
     tempEncounterTimes = []
     neoEncounters = neoEncounterDates(neoEncounters = [])
-    nextEncounter = currentTime
     # Convert String to Date time format then append into a Temp list
     for i in neoEncounters:
         if i[0] == selection:
             fixedDate = datetime.strptime(i[1], '%Y-%m-%d')
             #fixedDateFromString = datetime.strftime(fixedDate, '%Y-%m-%d')
-            tempEncounterTimes.append(fixedDate)
-    for i in tempEncounterTimes:
-        if i >= currentTime:
-            if i <= nextEncounter:
-                nextEncounter = i
-    print (currentTime)
-    print (tempEncounterTimes)
-    print(nextEncounter)
+            tempEncounterTimes.append([fixedDate, i[2]])
+    # Find the smallest difference of all items in Temp list by subtracting the time with the current date
+    # Maybe run this for every item per list and append a new parameter at the end to find the smallest number?
+    nextEncounter = min(tempEncounterTimes[0], key=lambda x: abs(x - currentTime))
+    selectedNextEncounter = [nextEncounter.strftime('%Y-%m-%d'), ]
+    print(selectedNextEncounter)
+    return selectedNextEncounter
+
 singleNextEncounter(selectedNextEncounter = [], selection = 'Eros')

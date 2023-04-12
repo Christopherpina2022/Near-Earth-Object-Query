@@ -46,7 +46,7 @@ def menu():
                             selectedFirstObservation = firstObserved(selectedFirstObserved = '', selection = neoSelect)
                             selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous = '', selection = neoSelect)
                             selectedNearestMiss = singleNearestMiss(selectedNearestMiss = [] , selection = neoSelect)
-                            selectedNextEncounter = []
+                            #selectedNextEncounter = singleNextEncounter(selectedNextEncounter = [], selection = neoSelect)
                             CONST_LUNAR_CONVERT = 384399 # Distance between the surface of Earth to the Moon
 
                             # Start using data from Object Logic and Arrays
@@ -58,7 +58,7 @@ def menu():
                             print("The absolute magnitude for this NEO is " + selectedAbsoluteMagnitude + ".")
                             # Convert Lunar to Kilometers (384,399 Kilometers/Unit)
                             lunarNearestMiss = selectedNearestMiss[1] * CONST_LUNAR_CONVERT
-                            #lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
+                            lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
                             print("The nearest miss for this NEO will be in " + selectedNearestMiss[0], 
                                   "and will miss by \n" + str(selectedNearestMiss[1]),
                                   "Lunar units (" + str(lunarNearestMiss), "Kilometers).")
