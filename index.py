@@ -18,85 +18,95 @@ def menu():
         neoNames = neoName(objectName=[])
         match optionSelect:
             case '1':
-                os.system('cls')
-                # Print out all names of NEOS in groups of five
-                print ("List of all Near Earth Objects (Press any key to continue List)")
-                itemLimiter=0
-                for i in neoNames:
-                    print (i)
-                    itemLimiter+=1
-                    if itemLimiter == 10:
-                        input("Press any key to continue:")
-                        os.system('cls')
-                        print ("List of all Near Earth Objects (Press any key to continue List)")
-                        itemLimiter = 0
+                neoList(neoNames)
             case '2':
-                os.system('cls')
-                # Ask user to input their NEO of choice
-                print ("Entering a NEO provides various information about your selection and")
-                print ("allows you to lookup charts for our selection. (You can find names in option 1)")
-                stopSelect = True
-                while stopSelect == True:
-                    neoSelect = input('Select a name (Enter nothing to exit option)')
-                    for i in neoNames:
-                        if neoSelect == i:
-                            # Declare variables and constants
-                            selectedMinDiameter = singleMinDiameter(selectedMinDiameter = '', selection = neoSelect)
-                            selectedMaxDiamater = singleMaxDiameter(selectedMaxDiameter = '', selection = neoSelect)
-                            selectedAbsoluteMagnitude = singleAbsoluteMagnitude(selectedAbsoluteMagnitude = '', selection = neoSelect)
-                            selectedFirstObservation = firstObserved(selectedFirstObserved = '', selection = neoSelect)
-                            selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous = '', selection = neoSelect)
-                            selectedNearestMiss = singleNearestMiss(selectedNearestMiss = [] , selection = neoSelect)
-                            selectedNextEncounter = singleNextEncounter(selectedNextEncounter = [], selection = neoSelect)
-                            CONST_LUNAR_CONVERT = 384399 # Distance between the surface of Earth to the Moon
-
-                            # Start using data from Object Logic and Arrays
-                            os.system('cls')
-                            print ("Selected NEO: " + i + ", first discovered in " + selectedFirstObservation + ".")
-                            print("The minimum diameter of this NEO is " + selectedMinDiameter + ".")
-                            print("The maximum diameter of this NEO is " + selectedMaxDiamater + ".")
-                            print(selectedIsItHazardous)
-                            print("The absolute magnitude for this NEO is " + selectedAbsoluteMagnitude + ".")
-                            # Convert Lunar to Kilometers (384,399 Kilometers/Unit)
-                            lunarNearestMiss = selectedNearestMiss[1] * CONST_LUNAR_CONVERT
-                            lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
-                            print("The nearest miss for this NEO is observed to be in " + selectedNearestMiss[0], "and will miss by " + str(selectedNearestMiss[1]),"Lunar units (" + str(lunarNearestMiss), "Kilometers).")
-                            print("The next close encounter will be in " + selectedNextEncounter[0], "and will miss by " + str(selectedNextEncounter[1]), "Lunar units (" + str(lunarNextEncounter), "Kilometers).")
-                            neoSelected = [neoSelect]
-                            input("Press enter to continue:")
-                            stopSelect = False
-                        elif neoSelect == str(''):
-                            stopSelect = False
+                neoLookup(neoNames , neoSelected)
             case '3':
-                # Select from various charts
-                os.system('cls')
-                objectSelected = True
-                chartSelected = True
-                while objectSelected == True:
-                    if neoSelected == ['Init']:
-                        print("Please select a NEO before accessing this option")
-                        input("Press enter to continue...")
-                        objectSelected = False
-                    elif neoSelected == [neoSelect]:
-                        print ("Charts available to see for selected object: ")
-                        print ("1: Acceleration over time\n2: Dates observed over time\n3: Five closest encounters\n4: Back to main menu")
-                        chartChosen = input ("Please select a chart:")
-                        while chartSelected == True:
-                            match chartChosen:
-                                case 1:
-                                    pass
-                                case 2:
-                                    pass
-                                case 3:
-                                    pass
-                                case 4:
-                                    chartSelected = False
-                                case _:
-                                    pass
+                neoCharts(neoSelected)
             case '4':
                 print("Goodbye.")
                 keepGoing = False
             case _:
                 print ('Please select an option by the number assgned to it.')
         
+def neoLookup(neoNames , neoSelected):
+    os.system('cls')
+    # Ask user to input their NEO of choice
+    print ("Entering a NEO provides various information about your selection and")
+    print ("allows you to lookup charts for our selection. (You can find names in option 1)")
+    stopSelect = True
+    while stopSelect == True:
+        neoSelect = input('Select a name (Enter nothing to exit option)')
+        for i in neoNames:
+            if neoSelect == i:
+                # Declare variables and constants
+                selectedMinDiameter = singleMinDiameter(selectedMinDiameter = '', selection = neoSelect)
+                selectedMaxDiamater = singleMaxDiameter(selectedMaxDiameter = '', selection = neoSelect)
+                selectedAbsoluteMagnitude = singleAbsoluteMagnitude(selectedAbsoluteMagnitude = '', selection = neoSelect)
+                selectedFirstObservation = firstObserved(selectedFirstObserved = '', selection = neoSelect)
+                selectedIsItHazardous = singleHazardousNEO(selectedIsItHazardous = '', selection = neoSelect)
+                selectedNearestMiss = singleNearestMiss(selectedNearestMiss = [] , selection = neoSelect)
+                selectedNextEncounter = singleNextEncounter(selectedNextEncounter = [], selection = neoSelect)
+                CONST_LUNAR_CONVERT = 384399 # Distance between the surface of Earth to the Moon
+
+                # Start using data from Object Logic and Arrays
+                os.system('cls')
+                print ("Selected NEO: " + i + ", first discovered in " + selectedFirstObservation + ".")
+                print("The minimum diameter of this NEO is " + selectedMinDiameter + ".")
+                print("The maximum diameter of this NEO is " + selectedMaxDiamater + ".")
+                print(selectedIsItHazardous)
+                print("The absolute magnitude for this NEO is " + selectedAbsoluteMagnitude + ".")
+                # Convert Lunar to Kilometers (384,399 Kilometers/Unit)
+                lunarNearestMiss = selectedNearestMiss[1] * CONST_LUNAR_CONVERT
+                lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
+                print("The nearest miss for this NEO is observed to be in " + selectedNearestMiss[0], "and will miss by " + str(selectedNearestMiss[1]),"Lunar units (" + str(lunarNearestMiss), "Kilometers).")
+                print("The next close encounter will be in " + selectedNextEncounter[0], "and will miss by " + str(selectedNextEncounter[1]), "Lunar units (" + str(lunarNextEncounter), "Kilometers).")
+                neoSelected = [neoSelect]
+                input("Press enter to continue:")
+                stopSelect = False
+            elif neoSelect == str(''):
+                stopSelect = False
+    return neoSelected
+
+def neoCharts(neoSelected, neoSelect):
+    # Select from various charts
+    os.system('cls')
+    objectSelected = True
+    chartSelected = True
+    while objectSelected == True:
+        if neoSelected == ['Init']:
+            print("Please select a NEO before accessing this option")
+            input("Press enter to continue...")
+            objectSelected = False
+        elif neoSelected == [neoSelect]:
+            print ("Charts available to see for selected object: ")
+            print ("1: Acceleration over time\n2: Dates observed over time\n3: Five closest encounters\n4: Back to main menu")
+            chartChosen = input ("Please select a chart:")
+            while chartSelected == True:
+                match chartChosen:
+                    case 1:
+                        pass
+                    case 2:
+                        pass
+                    case 3:
+                        pass
+                    case 4:
+                        chartSelected = False
+                    case _:
+                        pass
+                                
+def neoList(neoNames):
+    os.system('cls')
+    # Print out all names of NEOS in groups of five
+    print ("List of all Near Earth Objects (Press any key to continue List)")
+    itemLimiter=0
+    for i in neoNames:
+        print (i)
+        itemLimiter+=1
+        if itemLimiter == 10:
+            input("Press any key to continue:")
+            os.system('cls')
+            print ("List of all Near Earth Objects (Press any key to continue List)")
+            itemLimiter = 0
+                        
 menu()

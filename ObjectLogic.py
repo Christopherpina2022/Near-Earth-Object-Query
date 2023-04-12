@@ -90,10 +90,10 @@ def singleNextEncounter(selectedNextEncounter, selection):
     # Declare local variables and constants
     currentTime = datetime.now()
     tempEncounterTimes = []
-    encounterTimes = []
     neoEncounters = neoEncounterDates(neoEncounters = [])
     CONST_PLACEHOLDER = 99
     CONST_DELTA_PLACEHOLD = timedelta(days=9999999)
+    CONST_DELTA_MIN = timedelta(days=0)
     # Convert String to Date time format then append into a Temp list
     for i in neoEncounters:
         if i[0] == selection:
@@ -104,7 +104,7 @@ def singleNextEncounter(selectedNextEncounter, selection):
     for i in tempEncounterTimes:
         nextEncounterDifference = lambda x: x - currentTime
         itemDifference = nextEncounterDifference(i[0])
-        if itemDifference >= timedelta(days=0):
+        if itemDifference >= CONST_DELTA_MIN:
             if  itemDifference < closestTimeDelta:
                 # Declare current value as the next encounter and format date time back to string to be read by index
                 closestTimeDelta = itemDifference
