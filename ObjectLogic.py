@@ -1,7 +1,7 @@
 #import DictionaryInit as Dict
 import ObjectArrays as Arrays
 from ObjectArrays import *
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def averageDiameter(avgDiameter):
     # Find Average Min and Max Diameter of NEOs
@@ -83,18 +83,29 @@ def singleNextEncounter(selectedNextEncounter, selection):
     # establish the current time in YYYY-MM-DD Format
     currentTime = datetime.now()
     tempEncounterTimes = []
+    encounterTimes = []
     neoEncounters = neoEncounterDates(neoEncounters = [])
+    CONST_PLACEHOLDER = 99
+    CONST_DELTA_PLACEHOLD = datetime.timedelta(days=9999999)
     # Convert String to Date time format then append into a Temp list
     for i in neoEncounters:
         if i[0] == selection:
             fixedDate = datetime.strptime(i[1], '%Y-%m-%d')
             #fixedDateFromString = datetime.strftime(fixedDate, '%Y-%m-%d')
-            tempEncounterTimes.append([fixedDate, i[2]])
+            tempEncounterTimes.append([fixedDate, i[2], CONST_PLACEHOLDER])
     # Find the smallest difference of all items in Temp list by subtracting the time with the current date
-    # Maybe run this for every item per list and append a new parameter at the end to find the smallest number?
-    nextEncounter = min(tempEncounterTimes[0], key=lambda x: abs(x - currentTime))
-    selectedNextEncounter = [nextEncounter.strftime('%Y-%m-%d'), ]
-    print(selectedNextEncounter)
+    closestTimeDelta = CONST_DELTA_PLACEHOLD
+    for i in tempEncounterTimes:
+        nextEncounterDifference = lambda x: abs(x - currentTime)
+        if nextEncounterDifference[i[0]] < closestTimeDelta:
+            closestTimeDelta = nextEncounterDifference[i[0]]
+            selectedNextEncounter = i
+            print (selectedNextEncounter)
+    
+
+
+    #selectedNextEncounter = [nextEncounter.strftime('%Y-%m-%d'), ]
+    #print(selectedNextEncounter)
     return selectedNextEncounter
 
 singleNextEncounter(selectedNextEncounter = [], selection = 'Eros')
