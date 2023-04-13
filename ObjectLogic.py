@@ -116,12 +116,24 @@ def singleRelativeVelocity(neoSelected):
     # Iterate velocity and Dates of a selected NEO
     relativeVelocity = neoRelativeVelocity(relativeVelocity=[])
     tempSelectedVelocity = []
+    sortVelocity = []
+    SelectedVelocity = []
+    currentTime = datetime.now()
     for i in relativeVelocity:
         if i[0] == neoSelected:
-            tempSelectedVelocity.append([i[1], i[2]])
+            # convert strings to date time format
+            dateTimeConvert = datetime.strptime(i[2], '%Y-%m-%d')
+            tempSelectedVelocity.append([i[1], dateTimeConvert, timedelta(days=0)])
     # I want to make the data start from last date from Current day and also be in order from Newest to Oldest
     # First I want to only include data that has a Negative Time Delta when compared with a Time Delta Lambda Function
-    # and then order it by smallest Negative Delta to largest
-    print (tempSelectedVelocity)
-            
+    # and then order by string 
+    for i in tempSelectedVelocity:
+        timedifference = lambda x: x - currentTime
+        if timedifference(i[1]) < timedelta(days=0):
+            # Convert date time back to string
+            dateTimeToString = datetime.strftime(i[1], '%Y-%m-%d')
+            sortVelocity.append([i[0], dateTimeToString, timedifference])
+    sortVelocity = sorted(sortVelocity, key = lambda x: timedelta(x[2]))
+    print (sortVelocity)
+    
 singleRelativeVelocity(neoSelected= 'Eros')
