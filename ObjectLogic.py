@@ -111,3 +111,17 @@ def singleNextEncounter(selectedNextEncounter, selection):
                 fixedDateFromString = datetime.strftime(i[0], '%Y-%m-%d')
                 selectedNextEncounter = [fixedDateFromString, i[1]]
     return selectedNextEncounter
+
+def singleRelativeVelocity(neoSelected):
+    # Iterate velocity and Dates of a selected NEO
+    relativeVelocity = neoRelativeVelocity(relativeVelocity=[])
+    tempSelectedVelocity = []
+    for i in relativeVelocity:
+        if i[0] == neoSelected:
+            tempSelectedVelocity.append([i[1], i[2]])
+    # I want to make the data start from last date from Current day and also be in order from Newest to Oldest
+    # First I want to only include data that has a Negative Time Delta when compared with a Time Delta Lambda Function
+    # and then order it by smallest Negative Delta to largest
+    print (tempSelectedVelocity)
+            
+singleRelativeVelocity(neoSelected= 'Eros')

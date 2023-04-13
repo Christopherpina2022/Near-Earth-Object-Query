@@ -71,3 +71,11 @@ def neoEncounterDates(neoEncounters):
         for j in i["close_approach_data"]:
             neoEncounters.append([i.get('name_limited'), j["close_approach_date"], float(j['miss_distance']['lunar'])])
     return neoEncounters
+
+def neoRelativeVelocity(relativeVelocity):
+    # find the velocity of every NEO relative to earth and include the dates as well
+    relativeVelocity = []
+    for i in Dict.CE_dict['near_earth_objects']:
+        for j in i['close_approach_data']:
+            relativeVelocity.append([i.get('name_limited'), j['relative_velocity']['kilometers_per_hour'], j['close_approach_date']])
+    return relativeVelocity

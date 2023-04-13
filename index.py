@@ -1,9 +1,9 @@
 # This version of the app implements a command line version of the program to help speed up the production of this app until
 # I can fully understand a bit more of Front end development.
-import ObjectArrays as Arrays
+import ObjectArrays
 from ObjectArrays import *
 import os
-import ObjectLogic as Logic
+import ObjectLogic
 from ObjectLogic import *
 
 def menu():
@@ -11,23 +11,31 @@ def menu():
     neoSelected = ['Init']
     while keepGoing == True:  
         os.system('cls')
-        print ('Near Earth objet Web Service Query (Command Line version) \nby Chris Pina\n')
+        print ('Near Earth object Web Service Query (Command Line version) \nby Chris Pina\n')
         print ('1: List all Near Earth Objects \n2: lookup information about a Near Earth Object \n3: Lookup charts by selected NEO \n4: Quit application')
         optionSelect = input('Please enter an option: \n')
-        # Basic validation loop
         neoNames = neoName(objectName=[])
         match optionSelect:
             case '1':
                 neoList(neoNames)
             case '2':
-                neoLookup(neoNames , neoSelected)
+                neoSelected = neoLookup(neoNames, neoSelected = [])
             case '3':
-                neoCharts(neoSelected)
+                neoCharts(neoSelected = neoSelected)
             case '4':
                 print("Goodbye.")
                 keepGoing = False
+            case 'bagel':
+                print("Bagel.")
+                input()
+            case 'Alien':
+                print("Behind you.")
+                input()
+            case 'Duende':
+                print("Mimimimimimimimimimimimimi")
+                input()
             case _:
-                print ('Please select an option by the number assgned to it.')
+                print ('Please select an option by the number assigned to it.')
         
 def neoLookup(neoNames , neoSelected):
     os.system('cls')
@@ -66,9 +74,11 @@ def neoLookup(neoNames , neoSelected):
                 stopSelect = False
             elif neoSelect == str(''):
                 stopSelect = False
+            elif stopSelect == False:
+                break
     return neoSelected
 
-def neoCharts(neoSelected, neoSelect):
+def neoCharts(neoSelected):
     # Select from various charts
     os.system('cls')
     objectSelected = True
@@ -78,22 +88,27 @@ def neoCharts(neoSelected, neoSelect):
             print("Please select a NEO before accessing this option")
             input("Press enter to continue...")
             objectSelected = False
-        elif neoSelected == [neoSelect]:
+        else:
             print ("Charts available to see for selected object: ")
             print ("1: Acceleration over time\n2: Dates observed over time\n3: Five closest encounters\n4: Back to main menu")
-            chartChosen = input ("Please select a chart:")
             while chartSelected == True:
+                chartChosen = input ("Please select a chart:")
                 match chartChosen:
-                    case 1:
+                    case '1':
+                        # Iterate every acceleration of selected Neo over time
                         pass
-                    case 2:
+                    case '2':
+                        # Iterate every observed date of a NEO
                         pass
-                    case 3:
+                    case '3':
+                        # Showcase the five closest encounters of a selected NEO
                         pass
-                    case 4:
+                    case '4':
                         chartSelected = False
+                        break
                     case _:
                         pass
+            objectSelected = False
                                 
 def neoList(neoNames):
     os.system('cls')
@@ -108,5 +123,10 @@ def neoList(neoNames):
             os.system('cls')
             print ("List of all Near Earth Objects (Press any key to continue List)")
             itemLimiter = 0
-                        
+
+def chartAcceleration(neoSelected):
+    # Iterate accelleration over time for selected NEO (also add iterable Delta Time as a third row ignoring the first row)
+    singleAcceleration = singleRelativeVelocity(neoSelected= neoSelected)
+    pass
+    
 menu()
