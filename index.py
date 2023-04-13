@@ -34,8 +34,13 @@ def menu():
             case 'Duende':
                 print("Mimimimimimimimimimimimimi")
                 input()
+            case 'sv_cheats 1':
+                print("sorry lad, but i have to put you in the serious room.")
+                input()
+                seriousRoom()
             case _:
                 print ('Please select an option by the number assigned to it.')
+                input()
         
 def neoLookup(neoNames , neoSelected):
     os.system('cls')
@@ -128,5 +133,10 @@ def chartAcceleration(neoSelected):
     # Iterate accelleration over time for selected NEO (also add iterable Delta Time as a third row ignoring the first row)
     singleAcceleration = singleRelativeVelocity(neoSelected= neoSelected)
     pass
+
+def seriousRoom():
+    while True:
+        print ("This is the serious room, it's where all the bad people go when they try to cheat.")
+        input()
     
 menu()
