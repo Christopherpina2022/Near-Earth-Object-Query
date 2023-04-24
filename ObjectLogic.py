@@ -130,7 +130,7 @@ def topNearestMisses(chartNearestMisses, selection):
     sortedMisses = sorted(selectedNEOList, key = lambda x: x[1])  
     for i in sortedMisses:
         if x < 5:
-            chartNearestMisses.append([i[0], i[1]])
+            chartNearestMisses.append([i[0], str(i[1])])
             x += 1
         else:
             break

@@ -85,33 +85,32 @@ def neoLookup(neoNames , neoSelected):
 
 def neoCharts(neoSelected):
     # Select from various charts
-    os.system('cls')
     objectSelected = True
     chartSelected = True
     while objectSelected == True:
         if neoSelected == 'Init':
+            os.system('cls')
             print("Please select a NEO before accessing this option")
             input("Press enter to continue...")
             objectSelected = False
         else:
-            print ("Charts available to see for selected object: ")
-            print ("1: Acceleration over time\n2: Dates observed over time\n3: Five closest encounters\n4: Back to main menu")
             while chartSelected == True:
+                os.system('cls')
+                print ("Charts available to see for selected object: ")
+                print ("1: Acceleration over time\n2: miss distance over time\n3: Five closest encounters\n4: Back to main menu")
                 chartChosen = input ("Please select a chart:")
                 match chartChosen:
                     case '1':
                         # Iterate every acceleration of selected Neo over time
                         chartAcceleration(neoSelected)
-                        chartSelected = False
-                        break
+                        pass
                     case '2':
                         # Iterate every observed date of a NEO
                         chartDates(neoSelected = neoSelected)
-                        chartSelected = False
-                        break
+                        pass
                     case '3':
                         # Showcase the five closest encounters of a selected NEO
-                        chartClosestEncounters(neoSelected= neoSelected)
+                        chartClosestEncounters(neoSelected = neoSelected)
                         pass
                     case '4':
                         chartSelected = False
@@ -149,19 +148,30 @@ def chartAcceleration(neoSelected):
 def chartDates(neoSelected):
     os.system('cls')
     neoEncounters = neoEncounterDates(neoEncounters=[])
+    CONST_CHART_LIMIT = 10
+    chartIterator = 0
+    print("Miss distance of " + neoSelected + " over time")
+    print("Date observed    Miss distance (Lunar units)")
     for i in neoEncounters:
         if i[0] == neoSelected:
-            print (i[0], i[1])
-    input()
+                print (i[1] + '       ' + str(i[2]))
+                chartIterator += 1
+                if chartIterator >= CONST_CHART_LIMIT:
+                    input("Press enter to continue:")
+                    os.system('cls')
+                    print("Miss distance of " + neoSelected + " over time")
+                    print("Date observed    Miss distance (Lunar units)")
+                    chartIterator = 0
+    input("Press enter to return to chart menu:")
 
 def chartClosestEncounters(neoSelected):
     # List off the five closest encounters for a NEO
     os.system('cls')
     chartNearestMisses = topNearestMisses(chartNearestMisses = [], selection = neoSelected)
-    print ("Top Five nearest encounters for " + ":")
-    print ("Date observed          Distance Missed (Lunar)")
+    print ("Top Five nearest encounters for " + neoSelected + ":")
+    print ("Date observed     Distance Missed (Lunar)")
     for i in chartNearestMisses:
-        print (chartNearestMisses[i][0], '          ' + chartNearestMisses[i][1])
+        print (i[0] +'        ' + i[1])
     input("Press enter to continue:")
 
 def seriousRoom():
