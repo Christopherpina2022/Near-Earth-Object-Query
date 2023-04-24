@@ -112,15 +112,16 @@ def singleNextEncounter(selectedNextEncounter, selection):
                 selectedNextEncounter = [fixedDateFromString, i[1]]
     return selectedNextEncounter
 
-def singleRelativeVelocity(neoSelected):
+def singleRelativeVelocity(singleAcceleration, selection):
     # Iterate velocity and Dates of a selected NEO
+    print(selection)
     relativeVelocity = neoRelativeVelocity(relativeVelocity=[])
     tempSelectedVelocity = []
     sortVelocity = []
-    SelectedVelocity = []
+    singleAcceleration = []
     currentTime = datetime.now()
     for i in relativeVelocity:
-        if i[0] == neoSelected:
+        if i[0] == selection:
             # convert strings to date time format
             dateTimeConvert = datetime.strptime(i[2], '%Y-%m-%d')
             tempSelectedVelocity.append([i[1], dateTimeConvert, timedelta(days=0)])
@@ -132,8 +133,28 @@ def singleRelativeVelocity(neoSelected):
         if timedifference(i[1]) < timedelta(days=0):
             # Convert date time back to string
             dateTimeToString = datetime.strftime(i[1], '%Y-%m-%d')
-            sortVelocity.append([i[0], dateTimeToString, timedifference])
-    sortVelocity = sorted(sortVelocity, key = lambda x: timedelta(x[2]))
-    print (sortVelocity)
-    
-singleRelativeVelocity(neoSelected= 'Eros')
+            deltaConvert = float(timedifference(i[1]).days)
+            sortVelocity.append([i[0], dateTimeToString, deltaConvert])
+    singleAcceleration = sortVelocity
+    singleAcceleration = sorted(sortVelocity, key= lambda x: x[2], reverse=True)
+    return singleAcceleration
+
+def topNearestMisses(chartNearestMisses, selection):
+    # Find the top 5 nearest Misses after sorting in ascending order of distance
+    selectedNEOList = []
+    neoEncounters = neoEncounterDates(neoEncounters=[])
+    x = 0
+    chartNearestMisses = []
+    for i in neoEncounters:
+        if i[0] == selection:
+            selectedNEOList.append([i[1], i[2]])
+    sortedMisses = sorted(selectedNEOList, key = lambda x: x[1])  
+    for i in sortedMisses:
+        if x < 5:
+            chartNearestMisses.append([i[0], i[1]])
+            x += 1
+        else:
+            break
+    return chartNearestMisses
+        
+topNearestMisses(chartNearestMisses = [], selection = 'Eros')

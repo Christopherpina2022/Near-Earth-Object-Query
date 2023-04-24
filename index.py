@@ -21,7 +21,7 @@ def menu():
             case '2':
                 neoSelected = neoLookup(neoNames, neoSelected = [])
             case '3':
-                neoCharts(neoSelected = neoSelected)
+                neoCharts(neoSelected)
             case '4':
                 print("Goodbye.")
                 keepGoing = False
@@ -101,12 +101,17 @@ def neoCharts(neoSelected):
                 match chartChosen:
                     case '1':
                         # Iterate every acceleration of selected Neo over time
-                        pass
+                        chartAcceleration(neoSelected)
+                        chartSelected = False
+                        break
                     case '2':
                         # Iterate every observed date of a NEO
-                        pass
+                        chartDates(neoSelected = neoSelected)
+                        chartSelected = False
+                        break
                     case '3':
                         # Showcase the five closest encounters of a selected NEO
+                        chartClosestEncounters(neoSelected= neoSelected)
                         pass
                     case '4':
                         chartSelected = False
@@ -131,8 +136,32 @@ def neoList(neoNames):
 
 def chartAcceleration(neoSelected):
     # Iterate accelleration over time for selected NEO (also add iterable Delta Time as a third row ignoring the first row)
-    singleAcceleration = singleRelativeVelocity(neoSelected= neoSelected)
-    pass
+    os.system('cls')
+    singleAcceleration = singleRelativeVelocity(singleAcceleration = [], selection = neoSelected)
+    itemIterator = 0
+    lastDate = []
+    print (neoSelected)
+    print("Date ")
+    print(singleAcceleration)
+    input()
+
+def chartDates(neoSelected):
+    os.system('cls')
+    neoEncounters = neoEncounterDates(neoEncounters=[])
+    for i in neoEncounters:
+        if i[0] == neoSelected:
+            print (i[1], i[2])
+    input()
+
+def chartClosestEncounters(neoSelected):
+    # List off the five closest encounters for a NEO
+    os.system('cls')
+    chartNearestMisses = topNearestMisses(chartNearestMisses = [], selection = neoSelected)
+    print ("Top Five nearest encounters for " + ":")
+    print ("Date observed          Distance Missed (Lunar)")
+    for i in chartNearestMisses:
+        print (chartNearestMisses[i][0], '          ' + chartNearestMisses[i][1])
+    input("Press enter to continue:")
 
 def seriousRoom():
     while True:
