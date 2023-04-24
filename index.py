@@ -8,7 +8,7 @@ from ObjectLogic import *
 
 def menu():
     keepGoing = True
-    neoSelected = ['Init']
+    neoSelected = 'Init'
     while keepGoing == True:  
         os.system('cls')
         print ('Near Earth object Web Service Query (Command Line version) \nby Chris Pina\n')
@@ -74,7 +74,7 @@ def neoLookup(neoNames , neoSelected):
                 lunarNextEncounter = selectedNextEncounter[1] * CONST_LUNAR_CONVERT
                 print("The nearest miss for this NEO is observed to be in " + selectedNearestMiss[0], "and will miss by " + str(selectedNearestMiss[1]),"Lunar units (" + str(lunarNearestMiss), "Kilometers).")
                 print("The next close encounter will be in " + selectedNextEncounter[0], "and will miss by " + str(selectedNextEncounter[1]), "Lunar units (" + str(lunarNextEncounter), "Kilometers).")
-                neoSelected = [neoSelect]
+                neoSelected = neoSelect
                 input("Press enter to continue:")
                 stopSelect = False
             elif neoSelect == str(''):
@@ -89,7 +89,7 @@ def neoCharts(neoSelected):
     objectSelected = True
     chartSelected = True
     while objectSelected == True:
-        if neoSelected == ['Init']:
+        if neoSelected == 'Init':
             print("Please select a NEO before accessing this option")
             input("Press enter to continue...")
             objectSelected = False
@@ -140,9 +140,10 @@ def chartAcceleration(neoSelected):
     singleAcceleration = singleRelativeVelocity(singleAcceleration = [], selection = neoSelected)
     itemIterator = 0
     lastDate = []
-    print (neoSelected)
-    print("Date ")
-    print(singleAcceleration)
+    print("Acceleration over time for " + neoSelected + " from last observed date onward:")
+    print("Date observed    Velocity of NEO    Delta distance over time")
+    for i in singleAcceleration:
+        print (i[1] + "       " + i[0])
     input()
 
 def chartDates(neoSelected):
@@ -150,7 +151,7 @@ def chartDates(neoSelected):
     neoEncounters = neoEncounterDates(neoEncounters=[])
     for i in neoEncounters:
         if i[0] == neoSelected:
-            print (i[1], i[2])
+            print (i[0], i[1])
     input()
 
 def chartClosestEncounters(neoSelected):

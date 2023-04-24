@@ -2,27 +2,7 @@
 import ObjectArrays as Arrays
 from ObjectArrays import *
 from datetime import datetime, timedelta
-
-def averageDiameter(avgDiameter):
-    # Find Average Min and Max Diameter of NEOs
-    
-    # Declare lists and setup to convert to average number
-    objectSizeMin = neoDiameterMin(objectSizeMin = [])
-    objectSizeMax = neoDiameterMax(objectSizeMax = [])
-    minDiameter = []
-    maxDiameter = []
-    
-    for i in (objectSizeMin):
-        minDiameter.append(i[1])
-    for i in (objectSizeMax):
-        maxDiameter.append(i[1])
-    
-    # Average number is Sum of all numbers / number of all items listed
-    avgDiameter = []
-    avgDiameter.append(round(sum(minDiameter)/len(minDiameter)))
-    avgDiameter.append(round(sum(maxDiameter)/len(maxDiameter)))
-    return (avgDiameter)
-        
+     
 def singleMinDiameter(selectedMinDiameter, selection):
     # Find the Min and Max Diameter for a selected Item
     objectSizeMin = neoDiameterMin(objectSizeMin = [])
@@ -114,7 +94,6 @@ def singleNextEncounter(selectedNextEncounter, selection):
 
 def singleRelativeVelocity(singleAcceleration, selection):
     # Iterate velocity and Dates of a selected NEO
-    print(selection)
     relativeVelocity = neoRelativeVelocity(relativeVelocity=[])
     tempSelectedVelocity = []
     sortVelocity = []
@@ -156,5 +135,3 @@ def topNearestMisses(chartNearestMisses, selection):
         else:
             break
     return chartNearestMisses
-        
-topNearestMisses(chartNearestMisses = [], selection = 'Eros')
