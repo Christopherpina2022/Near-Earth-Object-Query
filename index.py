@@ -138,12 +138,18 @@ def chartAcceleration(neoSelected):
     os.system('cls')
     singleAcceleration = singleRelativeVelocity(singleAcceleration = [], selection = neoSelected)
     itemIterator = 0
-    lastDate = []
     print("Acceleration over time for " + neoSelected + " from last observed date onward:")
-    print("Date observed    Velocity of NEO    Delta distance over time")
+    print("Date observed    Velocity of NEO (km/h)")
     for i in singleAcceleration:
-        print (i[1] + "       " + i[0])
-    input()
+        if itemIterator == 0:
+            print (i[1] + "       " + i[0])
+            lastDate = i[0]
+            itemIterator += 1
+        elif itemIterator >= 1:
+            deltaVelocity = float(i[0]) - float(lastDate)
+            print (i[1] + "       " + i[0] + " (Delta V = " + str(round(deltaVelocity)) + " km/h.)")
+            lastDate = i[0]
+    input("Press enter to return to chart menu:")
 
 def chartDates(neoSelected):
     os.system('cls')
