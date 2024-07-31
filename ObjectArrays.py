@@ -1,5 +1,4 @@
 import DictionaryInit as Dict
-import numpy as py
 
 def neoName(objectName):
     # Iterate all names in NEO API to create a list of all items
