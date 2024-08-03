@@ -1,12 +1,16 @@
 # Near-Earth-Object-Query
-Uses the NeoWs API from NASA to show information about Near Earth Objects and other various information in a python GUI
+Uses the NeoWs API from NASA to show information about Near Earth Objects. Was originally purposed to learn how to work with APIs.
 
-There really isn't a purpose for this application, i'm just trying to learn APIs with the Nasa Near Earth Object Web Service since it was free to use.
-I'm mainly just making an app with Tkinter's GUI to visualize data pulled straight out of the API and some other calculations that are dependent on the JSON file.
+## Installation
+After cloning the repo, you will need to add a .env file and enter in your API key as described in the below documentation. Afterwards, you will
+then execute the **RepoInit.ps1** Powershell file in the root folder which will automatically build your Virtual environment and install all
+dependencies; do note that the environment will not build and leave a warning redirecting to this README if it does not find the .env file.
 
-to recieve your API key to use this application, go to https://api.nasa.gov/ and fill out the form below which will generate your key. the API this
-app uses on NASA's site is called Asteroids NeoWs. the Dictionary init python script will automatically find your key if you name your .env variable:
+## Getting the NASA API Key
+to recieve your API key to use this application, go to https://api.nasa.gov/ and fill out the form requesting your full 
+name and Email (the reason for the key is optional). the API this app uses on NASA's site is called Asteroids NeoWs. 
+the Dictionary init python script will automatically find your key if you name your .env variable:
+
+```
 API_KEY = {Your API here}.
-
-Packages used for this app: numpy, requests, urllib3, dotenv
-The GUI build on the Test-Branch uses Tkinter and on later commits was replaced by PysimpleGui, but for now is a scrapped concept.
+```

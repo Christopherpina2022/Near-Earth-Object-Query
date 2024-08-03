@@ -25,19 +25,6 @@ def menu():
             case '4':
                 print("Goodbye.")
                 keepGoing = False
-            case 'bagel':
-                print("Bagel.")
-                input()
-            case 'Alien':
-                print("Behind you.")
-                input()
-            case 'Duende':
-                print("Mimimimimimimimimimimimimi")
-                input()
-            case 'sv_cheats 1':
-                print("sorry lad, but i have to put you in the serious room.")
-                input()
-                seriousRoom()
             case _:
                 print ('Please select an option by the number assigned to it.')
                 input()
